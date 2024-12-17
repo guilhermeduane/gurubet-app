@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsivo com CSS Embutido</title>
+    <style>
+        /* Estilo geral */
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #313131;
+            color: #fff;
+        }
+
+							.logo-topo {
+								width: 194px;
+								height: 63px;
+								margin-top: 30px;
+								margin-left: 30px; 
+								position:fixed;
+							}
+
+							.custom-button1 {
+							width: 100%;
+							max-width: 300px;
+							height: 60px;
+							background-color: #3BA0E3;
+							border-radius: 6px;
+							border: 4px solid #2A2A2A;
+							display: flex;
+							justify-content: center;
+							align-items: center;
+							font-family: 'Product Sans', sans-serif;
+							font-weight: bold;
+							font-size: 18px;
+							color: white;
+							text-align: center;
+							text-decoration: none;
+							cursor: pointer;
+							margin-top: 120px;
+							position: fixed;
+							z-index: 100; /* Coloca o botão acima de outros elementos */
+						}
+
+							/* Hover effect */
+							.custom-button1:hover {
+								background-color: #2A8BCE;
+							}
+		
+		
+		.overlay {
+            position: fixed;
+            top: 0;
+            left: -100%; /* Inicialmente, a tela estará fora da tela, à esquerda */
+            width: 100%;
+            height: 100%;
+            background-color: #3BA0E3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: left 0.5s ease; /* Efeito de transição suave */
+            z-index: 9999; /* Fica atrás do botão */
+        }
+
+        /* Estilo do botão para fechar */
+        .close-btn {
+            padding: 15px 30px;
+            background-color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 18px;
+            cursor: pointer;
+            color: #3BA0E3;
+            font-weight: bold;
+        }
+
+							.custom-button2 {
+								width: 100%;
+								max-width: 300px;
+								height: 60px;
+								background-color: #BCB227;
+								border-radius: 6px;
+								border: 4px solid #2A2A2A;
+								display: flex;
+								justify-content: center;
+								align-items: center;
+								font-family: 'Product Sans', sans-serif;
+								font-weight: bold;
+								font-size: 18px;
+								color: white;
+								text-align: center;
+								text-decoration: none;
+								cursor: pointer;
+								margin-top: 200px;
+								position: fixed;        
+							}
+
+							/* Hover effect */
+							.custom-button2:hover {
+								background-color: #989028;
+							}
+		
+		
+		
+							.banner-topo {
+							  width: 728px;
+							  height: 90px;
+							  background-image: url('imagens/publicidade1.jpg'); /* Substitua pelo caminho da sua imagem */
+							  background-size: cover;
+							  background-position: center;
+							  margin-top: -20px;						
+
+							}
+		
+							.header {
+								width: 100%;
+								height: 280px;
+								text-align: center;
+								margin-top: -40px;
+								
+							}
+		
+		
+							.busca-principal{
+								width: 100%;
+								border-radius: 4px;
+								height: 40px;
+								background-color: #1E1E1E;
+								margin-top: 200px;
+								display: flex;
+								justify-content: left;
+								align-items: center;
+								font-family: 'Product Sans', sans-serif;
+								font-weight: bold;
+								font-size: 18px;
+								color: white;
+								text-align: left;
+								text-decoration: none;
+							}
+		
+							.lupa{
+								width: 40px;
+								height: 20px;								
+								margin-left: auto;	
+								text-align: center;						
+							}
+		
+							.texto-busca{
+								width: 100%;
+								height: 20px;
+								margin-left: 10px;
+							}
+		
+							
+							.filtros{
+								width: 300px;
+								height:40px;
+								margin-top:10px;								
+								font-family: 'Product Sans', sans-serif;
+								font-weight: bold;
+								font-size: 18px;
+								color: white;
+								text-align: left;
+								text-decoration: none;
+								
+								
+							}
+		
+		
+							.titulo-sessao{
+								width: 100%;
+								height:20px;
+								display: flex;
+								font-family: 'Product Sans', sans-serif;
+								font-weight: bold;
+								font-size: 18px;
+								color: white;
+								text-align: left;
+								text-decoration: none;
+								margin-left: 40px;
+								margin-top: -30px;
+							}
+		
+							.icone-sessao{
+								width:40px;
+								height:20px;
+								margin-top: 10px;	
+								padding: 10px;
+							}
+		
+		
+		
+		
+		/* Estilo para o dropdown */
+        .dropdown {
+            width: 336px;
+            height: 37px;
+            background-color: #232323;
+			font-family: 'Product Sans', sans-serif;
+            color: white;
+            position: relative;
+            border-radius: 4px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            padding-left: 10px;
+			margin-top: -38px;
+			margin-left: 120px;
+        }
+
+        /* Setinha que indica se o dropdown está aberto ou fechado */
+        .dropdown::after {
+            content: '▼';
+            color: white;
+            margin-left: auto;			
+            font-size: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        /* Setinha invertida quando o dropdown está aberto */
+        .dropdown.open::after {
+            transform: rotate(180deg);
+        }
+
+        /* Estilo do dropdown aberto */
+        .dropdown.open {
+            height: 280px;
+        }
+
+        /* Lista de itens do dropdown */
+        .dropdown ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            overflow-y: auto;
+            position: absolute;
+            top: 37px;
+            left: 0;
+            right: 0;
+            background-color: #232323;
+            z-index: 100;
+        }
+
+        /* Estilo de cada item do dropdown */
+        .dropdown li {
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #444;
+        }
+
+        /* Estilo para o radio button */
+        .dropdown li input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        /* Estilo do botão Editar */
+        .dropdown li .btn-editar {
+            padding: 5px 10px;
+            background-color: #3BA0E3;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        /* Hover effect no botão Editar */
+        .dropdown li .btn-editar:hover {
+            background-color: #2A8BCE;
+        }
+
+        /* Exibir só o primeiro link quando fechado */
+        .dropdown.closed ul {
+            display: none;
+        }
+
+        /* Estilo do primeiro link, visível quando o dropdown está fechado */
+        .dropdown.closed li:first-child {
+            display: flex;
+            align-items: center;
+        }
+
+        /* Alinhamento do texto à esquerda */
+        .dropdown li span {
+            text-align: left;
+            width: 100%;
+        }
+		
+		
+		
+		.linha-divisoria{
+			width: 100%;
+			height: 1px;
+			margin-top: 30px;
+			background-color: #707070;
+		}
+		
+		.titulos-internos {
+		  font-family: 'Product Sans', sans-serif;
+		  font-weight: bold;
+		  font-size: 18px;
+		  color: white;
+		  text-align: left;
+		  text-decoration: none;
+		  margin-top: 10px;
+	  }
+		
+		.content-section {
+			width: 100%;
+			margin-bottom: 10px;
+			background-color: #313131;
+			border: 1px solid #444;
+			box-sizing: border-box;
+			font-family: 'Product Sans', sans-serif;
+			margin-top: 20px;			
+  			}
+
+		  .section-top {
+			height: 20px;
+			background-color: #2B2B2B;
+			display: flex;
+			align-items: center;
+			justify-content: left;
+			padding: 10px;
+			text-align: left;
+			color: white;
+			font-weight: bold;
+		  }
+		
+		.marcacao-titulo{
+			height:20px;
+			width: 3px;
+			background-color: #BCB227;
+		}
+		
+		.espacamento {
+			height: 20px;
+			width: 8px;
+		}
+
+		  .section-body {
+			display: flex;
+			width: 100%;
+		  }
+
+		  .body-left {
+			width: 70px;
+			background-color: #313131;
+			text-align: center;
+			color: white;
+			padding: 10px 5px;
+			box-sizing: border-box;
+		  }
+
+		  .body-right {
+			flex-grow: 1;
+			padding: 10px;
+			color: white;
+			box-sizing: border-box;
+			  text-align: left;
+		  }
+	  
+		  .section-campeonato {
+			  height: 24px;
+			  width: 100%;
+			  font-weight: bold;
+			  text-align: left;
+			  margin-top: -40px;
+		  }
+		
+		 .content {
+		width: 100%;
+		background-color: #313131;
+		padding: 20px;
+		box-sizing: border-box;
+			 text-align: left;
+			 
+		}
+		
+		
+		
+		
+											.main-div {
+											  width: 100%;
+											  height: 44px;
+											  display: flex;
+												margin-top: -15px;
+												margin-bottom: 10px;
+												
+											
+												
+											}
+
+											/* Estilo das 3 divs dentro da div principal */
+											.sub-div {
+											  height: 44px;
+												width: 100%;
+												padding: 4px;
+											    display: flex;												
+											    margin-right: 16px;
+												background-color: #ffffff;
+												border-radius: 10px;
+												font-family: 'Product Sans', sans-serif;
+												font-weight: bold;
+												font-size: 30px;
+												color: #569226;
+												text-align: left;
+												text-decoration: none;
+											}
+
+											/* Remover margem da última sub-div */
+											.sub-div:last-child {
+											  margin-right: 0;
+												
+											}
+
+											/* Estilo das divs internas dentro de cada sub-div */
+											.inner-div {
+											  height: 100%;
+												width: 100%;
+												
+												/* Cada div interna ocupa metade da largura da sub-div */
+											}
+
+											/* Cores diferentes para as divs internas */
+											.inner-div-1 {
+											  	padding: 8px;
+												width: 30%;
+												font-family: 'Product Sans', sans-serif;
+												font-weight: bold;
+												font-size: 30px;
+												color: #569226;
+												text-align: left;
+												text-decoration: none;
+												margin-left: 10px;
+												
+												 /* Cor para a primeira div interna */
+											}
+		
+		
+											.grade {
+											  display: grid;
+											  grid-template-columns: auto auto auto; /* 3 colunas */
+											  grid-gap: 20px; /* Espaçamento de 20px entre as colunas */
+											  width: 100%;
+											  height: 30px;
+											  padding: 8px; /* Padding de 8px */
+											}
+											/* Estilo para as colunas */
+											.grade div {
+											  display: flex;
+											  justify-content: left;
+											  align-items: left;
+												font-family: 'Product Sans', sans-serif;												
+												font-size: 14px;
+												color: #9E9E9E;
+											}
+											
+		
+
+
+
+		
+		.botao-mais-mercados{
+			width: 120px;
+			height: 40px;
+			border-radius: 6px;
+			background-color: #4A4A4A;
+			margin-left: auto;
+			margin-top: 10px;
+			margin-right: 10px;			
+			background-color: #232323;
+			font-family: 'Product Sans', sans-serif;
+			font-weight: bold;
+			font-size: 14px;
+			color: #fff;			
+			display: flex;
+			justify-content: center;
+			align-items: center;			
+		}
+
+		
+		.botao-mais-mercados:hover{
+			background-color: #2D9321;
+			cursor: pointer;
+		}
+										
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+
+        /* Barra fixa no topo */
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background-color: #000;
+            z-index: 1000;
+        }
+
+        /* Container centralizado */
+        .container {
+            max-width: 1644px;
+			width: 100%;
+            margin: 40px auto 0; /* Espaço abaixo da barra fixa */
+            display: flex;
+            padding: 20px;
+            box-sizing: border-box;
+            flex-wrap: wrap; /* Permite que as seções se movam para a linha seguinte */
+        }
+
+        /* Sessão da esquerda */
+        .left-section {
+            width: 100%;
+			max-width: 333px;
+            
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* Sessão da direita */
+        .right-section {
+            flex: 1;
+            align-content: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+		
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: flex-start; /* Alinha as seções à esquerda */
+            }
+
+            .left-section {
+                width: 100%; /* Faz a seção esquerda ocupar toda a largura disponível */
+                margin-bottom: 20px; /* Adiciona espaço abaixo da esquerda */
+            }
+
+            .right-section {
+                width: 100%; /* Faz a seção direita ocupar toda a largura disponível */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Barra fixa no topo -->
+    <div class="top-bar"></div>
+
+    <!-- Container centralizado -->
+    <div class="container">
+        <!-- Sessão da esquerda -->
+        <div class="left-section">
+            <div class="logo-topo">
+                <img src="imagens/LOGO_SVG.svg" alt="Logo">
+            </div>
+            
+            <div class="custom-button1" onclick="showOverlay()">Minhas Seleções</div>
+            
+            <div class="custom-button2">Alertas</div>
+        </div>
+
+        <!-- Sessão da direita -->
+        <div class="right-section">
+            <div class="header">
+				
+				
+				
+				
+				<div class="busca-principal">
+					<div class="texto-busca">O que procura, guru?</div>
+					<div class="lupa"><img src="IMAGENS/busca.svg">
+					</div>
+				</div>
+				
+						<div class="filtros"><div class="icone-sessao"><img src="IMAGENS/icone_filtro.svg" alt="Logo">
+						</div>
+						<div class="titulo-sessao">Filtros:					
+						</div>
+							
+							
+				</div>
+				
+				
+				<div class="dropdown closed" onclick="toggleDropdown()">
+        <span>Minhas Preferências</span> <!-- Exibe apenas o primeiro link quando fechado -->
+        <ul>
+            <li><input type="radio" name="option" checked> <span>Apenas Meus Times</span> <button class="btn-editar">Editar</button></li>
+            <li><input type="radio" name="option"> <span>Apenas Minhas Competições</span> <button class="btn-editar">Editar</button></li>
+            <li><input type="radio" name="option"> <span>Apenas Meus Mercados</span> <button class="btn-editar">Editar</button></li>
+            <li><input type="radio" name="option"> <span>Apenas Meus Países</span> <button class="btn-editar">Editar</button></li>
+            <li><input type="radio" name="option"> <span>Apenas Minhas Casas de Apostas</span> <button class="btn-editar">Editar</button></li>
+        </ul>
+    </div>
+				
+				
+				
+				<div class="linha-divisoria">
+				</div>
+				<div class="titulos-internos"> Próximas 12 Horas:
+				</div>
+				
+				
+				<!-- AQUI COMEÇA AS TABELAS DE JOGOS, GUILHERME: -->
+				
+								
+				<div class="content-section">
+						<!-- Topo -->
+						<div class="section-top">
+						<div class= "marcacao-titulo">
+						</div>
+						<div class= "espacamento">
+						</div>
+
+							QUA, 23 DE OUTUBRO</div>
+					<div class= "botao-mais-mercados">Mais Mercados
+					</div>
+						<!-- Corpo -->
+						<div class="section-body">
+						<!-- Esquerda -->
+						<div class="body-left"></div>
+						<!-- Direita -->
+						<div class="body-right">
+
+						<div class="section-campeonato">COPA DO BRASIL</div>
+
+					    Atlético Mineiro (BRA)<br> Cruzeiro (BRA)
+		  
+		  			    <div class="grade">
+						<div>.CASA</div>
+						<div>.EMPATE</div>
+						<div>.VISITANTE</div>
+					    </div>		  
+		  					
+		  
+						<div class="main-div">
+						<div class="sub-div"><img src="IMAGENS/logomarcas/bet365.png">
+					    <div class="inner-div inner-div-1"></div>2.08							  
+						</div>
+
+						<!-- Segunda div interna -->
+						<div class="sub-div"><img src="IMAGENS/logomarcas/bet365.png">
+					    <div class="inner-div inner-div-1"></div>2.08							 
+						</div>
+
+						<!-- Terceira div interna -->
+						<div class="sub-div"><img src="IMAGENS/logomarcas/bet365.png">
+						<div class="inner-div inner-div-1"></div>2.08
+							  
+						</div>
+						</div>  		
+
+						</div>
+					</div>
+				  </div>
+				
+				
+				
+				<div class="content-section">
+						<!-- Topo -->
+						<div class="section-top">
+						<div class= "marcacao-titulo">
+						</div>
+						<div class= "espacamento">
+						</div>
+
+							QUA, 23 DE OUTUBRO</div>
+					<div class= "botao-mais-mercados">Mais Mercados
+					</div>
+						<!-- Corpo -->
+						<div class="section-body">
+						<!-- Esquerda -->
+						<div class="body-left"></div>
+						<!-- Direita -->
+						<div class="body-right">
+
+						<div class="section-campeonato">COPA DO BRASIL</div>
+
+					    Atlético Mineiro (BRA)<br> Cruzeiro (BRA)
+		  
+		  			    <div class="grade">
+						<div>.CASA</div>
+						<div>.EMPATE</div>
+						<div>.VISITANTE</div>
+					    </div>		  
+		  					
+		  
+						<div class="main-div">
+						<div class="sub-div"><img src="IMAGENS/logomarcas/bet365.png">
+					    <div class="inner-div inner-div-1"></div>2.08							  
+						</div>
+
+						<!-- Segunda div interna -->
+						<div class="sub-div"><img src="IMAGENS/logomarcas/bet365.png">
+					    <div class="inner-div inner-div-1"></div>2.08							 
+						</div>
+
+						<!-- Terceira div interna -->
+						<div class="sub-div"><img src="IMAGENS/logomarcas/bet365.png">
+						<div class="inner-div inner-div-1"></div>2.08
+							  
+						</div>
+						</div>  		
+
+						</div>
+					</div>
+				  </div>
+				
+				
+				
+				
+				<div class="content-section">
+						<!-- Topo -->
+						<div class="section-top">
+						<div class= "marcacao-titulo">
+						</div>
+						<div class= "espacamento">
+						</div>
+
+							QUA, 23 DE OUTUBRO</div>
+					<div class= "botao-mais-mercados">Mais Mercados
+					</div>
+						<!-- Corpo -->
+						<div class="section-body">
+						<!-- Esquerda -->
+						<div class="body-left"></div>
+						<!-- Direita -->
+						<div class="body-right">
+
+						<div class="section-campeonato">COPA DO BRASIL</div>
+
+					    Atlético Mineiro (BRA)<br> Cruzeiro (BRA)
+		  
+		  			    <div class="grade">
+						<div>.CASA</div>
+						<div>.EMPATE</div>
+						<div>.VISITANTE</div>
+					    </div>		  
+		  					
+		  
+						<div class="main-div">
+						<div class="sub-div"><img src="IMAGENS/logomarcas/bet365.png">
+					    <div class="inner-div inner-div-1"></div>2.08							  
+						</div>
+
+						<!-- Segunda div interna -->
+						<div class="sub-div"><img src="IMAGENS/logomarcas/bet365.png">
+					    <div class="inner-div inner-div-1"></div>2.08							 
+						</div>
+
+						<!-- Terceira div interna -->
+						<div class="sub-div"><img src="IMAGENS/logomarcas/bet365.png">
+						<div class="inner-div inner-div-1"></div>2.08
+							  
+						</div>
+						</div>  		
+
+						</div>
+					</div>
+				  </div>
+				
+				
+				
+				
+				<div class="content-section">
+						<!-- Topo -->
+						<div class="section-top">
+						<div class= "marcacao-titulo">
+						</div>
+						<div class= "espacamento">
+						</div>
+
+							QUA, 23 DE OUTUBRO</div>
+					<div class= "botao-mais-mercados">Mais Mercados
+					</div>
+						<!-- Corpo -->
+						<div class="section-body">
+						<!-- Esquerda -->
+						<div class="body-left"></div>
+						<!-- Direita -->
+						<div class="body-right">
+
+						<div class="section-campeonato">COPA DO BRASIL</div>
+
+					    Atlético Mineiro (BRA)<br> Cruzeiro (BRA)
+		  
+		  			    <div class="grade">
+						<div>.CASA</div>
+						<div>.EMPATE</div>
+						<div>.VISITANTE</div>
+					    </div>		  
+		  					
+		  
+						<div class="main-div">
+						<div class="sub-div"><img src="IMAGENS/logomarcas/bet365.png">
+					    <div class="inner-div inner-div-1"></div>2.08							  
+						</div>
+
+						<!-- Segunda div interna -->
+						<div class="sub-div"><img src="IMAGENS/logomarcas/bet365.png">
+					    <div class="inner-div inner-div-1"></div>2.08							 
+						</div>
+
+						<!-- Terceira div interna -->
+						<div class="sub-div"><img src="IMAGENS/logomarcas/bet365.png">
+						<div class="inner-div inner-div-1"></div>2.08
+							  
+						</div>
+						</div>  		
+
+						</div>
+					</div>
+				  </div>
+				
+				
+				
+				
+				
+				
+
+    <script>
+        // Função para alternar a abertura do dropdown
+        function toggleDropdown() {
+            const dropdown = document.querySelector('.dropdown');
+            dropdown.classList.toggle('open');
+            dropdown.classList.toggle('closed');
+        }
+    </script>					
+			</div>
+        	</div>
+		
+		
+		
+		
+		
+		<!-- Botão que ativa a tela deslizante -->
+    
+		
+		<div class="overlay" id="overlay">
+        <!-- Botão para fechar a tela -->
+        <button class="close-btn" onclick="hideOverlay()">Fechar</button>
+    	</div>
+		
+		
+		
+		
+		
+
+    	<script>
+        // Função para mostrar a tela deslizante
+        function showOverlay() {
+            document.getElementById('overlay').style.left = '0'; // Desliza a tela para a direita
+        }
+
+        // Função para esconder a tela deslizante
+        function hideOverlay() {
+            document.getElementById('overlay').style.left = '-100%'; // Desliza a tela de volta para a esquerda
+        }
+    	</script>
+		
+		
+		
+		
+    </div>
+	<script>
+        // Função para mostrar a tela deslizante
+        function showOverlay() {
+            document.getElementById('overlay').style.left = '0'; // Desliza a tela para a direita
+        }
+
+        // Função para esconder a tela deslizante
+        function hideOverlay() {
+            document.getElementById('overlay').style.left = '-100%'; // Desliza a tela de volta para a esquerda
+        }
+    </script></body>
+</html>

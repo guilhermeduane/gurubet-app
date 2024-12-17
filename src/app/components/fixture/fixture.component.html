@@ -1,0 +1,50 @@
+<div *ngFor="let tempFixtures of fixtures" class="content-section">
+    <div class="section-top">
+        <div class= "marcacao-titulo">
+        </div>
+        <div class= "espacamento">
+        </div>
+
+        {{ tempFixtures.timestamp}}</div>
+    <div class= "botao-mais-mercados">Mais Mercados
+    </div>
+    <!-- Corpo -->
+    <div class="section-body">
+        <!-- Esquerda -->
+        <div class="body-left"></div>
+        <!-- Direita -->
+        <div class="body-right">
+
+            <div class="section-campeonato">{{ tempFixtures.league.name}}</div>
+
+            {{ tempFixtures.teamHome.name }} <br> {{ tempFixtures.teamAway.name}}
+
+            <div class="grade">
+                <div>.CASA</div>
+                <div>.EMPATE</div>
+                <div>.VISITANTE</div>
+            </div>
+
+
+            <div class="main-div">
+                <div class="sub-div"><img src="assets/logo/bookmaker/bet365.png">
+                    <div class="inner-div inner-div-1"></div>2.08
+                </div>
+
+                <!-- Segunda div interna -->
+                <div class="sub-div"><img src="assets/logo/bookmaker/bet365.png">
+                    <div class="inner-div inner-div-1"></div>2.08
+                </div>
+
+                <!-- Terceira div interna -->
+                <div class="sub-div"><img src="assets/logo/bookmaker/bet365.png">
+                    <div class="inner-div inner-div-1"></div>2.08
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+

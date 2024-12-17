@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {FixtureComponent} from './components/fixture/fixture.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
   templateUrl: './app.component.html',
+  imports: [
+    FixtureComponent
+  ],
   styleUrl: './app.component.css'
 })
 export class AppComponent {
